@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
+import Header from "./components/header";
+import BedroomCount from "./components/bedroomCount";
+import ResultMessage from "./components/resultMessage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    bedroomCount: 0,
+  };
+
+  handleBedroomCount = () => {
+    const bedroomCount = document.querySelector("#bedroomCount").value;
+    if (bedroomCount < 2) {
+      return;
+    }
+    this.setState({ bedroomCount });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <Header />
+        <BedroomCount onClick={this.handleBedroomCount} />
+        <ResultMessage bedroomCount={this.state.bedroomCount} />
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
