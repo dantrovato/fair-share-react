@@ -1,21 +1,21 @@
 import React from "react";
 
-const BedroomCount = ({ commonAreasValue, onClick }) => {
-  if (commonAreasValue <= 0) {
+const CommonAreas = ({ propertyValue, onClick }) => {
+  if (propertyValue <= 0) {
     return;
   }
 
   return (
     <form className="row g-3 justify-content-center mb-3">
-      <label htmlFor="bedroomCount" className="col-sm-6 col-form-label">
-        Enter the number of bedrooms
+      <label htmlFor="commonAreasValue" className="col-sm-6 col-form-label">
+        Enter value of common areas
       </label>
       <div className="col-2">
         <input
           type="number"
           min="2"
           className="form-control"
-          id="bedroomCount"
+          id="commonAreasValue"
           placeholder=""
         />
       </div>
@@ -32,4 +32,4 @@ const BedroomCount = ({ commonAreasValue, onClick }) => {
   );
 };
 
-export default BedroomCount;
+export default CommonAreas;
