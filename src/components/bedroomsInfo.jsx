@@ -7,79 +7,110 @@ const BedroomsInfo = ({ bedroomCount, handleRoomSize, handleRoommates }) => {
   }
 
   const bedroomsKeys = _.range(1, Number(bedroomCount) + 1);
-
-  // const handleRoomSize = (event, id) => {
-  //   event.preventDefault();
-  //   const dimentions = Number(document.getElementById(id).value);
-  //   // console.log(dimentions);
-  // };
-
-  // const handleRoommates = (event, id) => {
-  //   event.preventDefault();
-  //   const roommates = Number(document.getElementById(id).value);
-  //   // console.log(roommates);
-  // };
+  const addFocusToNextInput = (event) => {
+    event.target
+      .closest("form")
+      .nextElementSibling.querySelector("input")
+      .focus();
+  };
 
   return bedroomsKeys.map((roomKey) => (
-    <form className="row g-3 justify-content-center mb-3" key={roomKey}>
-      <label
-        htmlFor={"bedroomSize" + roomKey}
-        className="col-sm-6 col-form-label"
+    <React.Fragment>
+      <form
+        className="row g-3 justify-content-center mb-3"
+        key={"bedroomsForm" + roomKey}
       >
-        Enter the size of room {roomKey} in sq metres or feet
-      </label>
-
-      <div className="col-2">
-        <input
-          type="number"
-          min="3"
-          className="form-control"
-          id={"bedroomSize" + roomKey}
-          placeholder=""
-        />
-      </div>
-
-      <div className="col-auto">
-        <button
-          onClick={(event) => {
-            // console.log("bedroomSize" + roomKey);
-            handleRoomSize(event, "bedroomSize" + roomKey);
-          }}
-          type="submit"
-          className="btn btn-primary mb-3"
+        <label
+          key={"roomsLabel" + roomKey}
+          htmlFor={"bedroomSize" + roomKey}
+          className="col-sm-6 col-form-label text-info"
         >
-          Enter
-        </button>
-      </div>
-      <label
-        htmlFor={"roomMatesNumber" + roomKey}
-        className="col-sm-6 col-form-label"
+          Enter the size of room {roomKey} in sq metres or feet
+        </label>
+
+        <div className="col-2">
+          {roomKey === 1 ? (
+            <input
+              autoFocus
+              type="number"
+              key={"roomsInput" + roomKey}
+              className="form-control text-info"
+              id={"bedroomSize" + roomKey}
+              placeholder=""
+              onBlur={(event) => {
+                handleRoomSize(event, "bedroomSize" + roomKey);
+                addFocusToNextInput(event);
+              }}
+            />
+          ) : (
+            <input
+              type="number"
+              key={"roomsInput" + roomKey}
+              className="form-control text-info"
+              id={"bedroomSize" + roomKey}
+              placeholder=""
+              onBlur={(event) => {
+                handleRoomSize(event, "bedroomSize" + roomKey);
+              }}
+            />
+          )}
+        </div>
+
+        <div className="col-auto">
+          <button
+            key={"roomsButton" + roomKey}
+            onClick={(event) => {
+              handleRoomSize(event, "bedroomSize" + roomKey);
+              addFocusToNextInput(event);
+            }}
+            type="submit"
+            className="btn btn-primary d-none"
+          >
+            Enter
+          </button>
+        </div>
+      </form>
+      <form
+        className="row g-3 justify-content-center mb-3"
+        key={"roomatesForm" + roomKey}
       >
-        How many people will be in room {roomKey}?
-      </label>
-
-      <div className="col-2">
-        <input
-          type="number"
-          min="1"
-          className="form-control"
-          id={"roomMatesNumber" + roomKey}
-          placeholder=""
-        />
-      </div>
-
-      <div className="col-auto">
-        <button
-          onClick={(event) =>
-            handleRoommates(event, "roomMatesNumber" + roomKey)
-          }
-          type="submit"
-          className="btn btn-primary mb-3"
+        <label
+          key={"roommatesLabel" + roomKey}
+          htmlFor={"roomMatesNumber" + roomKey}
+          className="col-sm-6 col-form-label text-info"
         >
-          Enter
-        </button>
-      </div>
-    </form>
+          How many people will be in room {roomKey}?
+        </label>
+
+        <div className="col-2">
+          <input
+            type="number"
+            key={"roommatesInput" + roomKey}
+            className="form-control text-info"
+            id={"roomMatesNumber" + roomKey}
+            placeholder=""
+            onBlur={(event) => {
+              handleRoommates(event, "roomMatesNumber" + roomKey);
+              addFocusToNextInput(event);
+            }}
+          />
+        </div>
+
+        <div className="col-auto">
+          <button
+            key={"roommatesButton" + roomKey}
+            onClick={(event) => {
+              handleRoommates(event, "roomMatesNumber" + roomKey);
+              addFocusToNextInput(event);
+            }}
+            type="submit"
+            className="btn btn-primary d-none"
+          >
+            Enter
+          </button>
+        </div>
+      </form>
+    </React.Fragment>
   ));
 };
 

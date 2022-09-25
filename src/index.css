@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* My own added rules */
+
+#header {
+  padding: 3rem;
+  width: 100%;
+  color: white;
+}
+
+div.col-auto {
+  /* margin: 0; */
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.image {
+  height: 25rem;
+  background-size: cover;
+  margin-top: -3rem;
+  margin-bottom: 3rem;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { useRef } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import Header from "./components/header";
@@ -7,16 +8,28 @@ import PropertyValue from "./components/propertyValue";
 import BedroomCount from "./components/bedroomCount";
 import BedroomsInfo from "./components/bedroomsInfo";
 import ResultMessage from "./components/resultMessage";
-import { clone } from "lodash";
+import Image from "./components/image";
 
 class App extends Component {
   state = {
     propertyValue: 0,
-    commonAreasValue: 0,
+    commonAreasPercentage: 0,
     bedroomCount: 0,
     dimentions: [],
     roommates: [],
   };
+
+  constructor() {
+    super();
+    console.log("App - Constructor");
+  }
+
+  // ref = useRef(null);
+
+  // handlePropertyValueBlur = () => {
+  //   this.ref.current.focus();
+  //   // document.querySelector("#commonAreasValue").focus;
+  // };
 
   handlePropertyValue = (event) => {
     event.preventDefault();
@@ -27,19 +40,25 @@ class App extends Component {
       return;
     }
 
+    // take out the focus when value is entered
+    document.querySelector("#propertyValue").blur();
+
     this.setState({ propertyValue });
   };
 
   handleCommonAreas = (event) => {
     event.preventDefault();
-    const commonAreasValue = Number(
+    const commonAreasPercentage = Number(
       document.querySelector("#commonAreasValue").value
     );
-    if (commonAreasValue <= 0) {
+    if (commonAreasPercentage <= 0) {
       return;
     }
 
-    this.setState({ commonAreasValue });
+    // take out the focus when value is entered
+    document.querySelector("#commonAreasValue").blur();
+
+    this.setState({ commonAreasPercentage });
   };
 
   handleBedroomCount = (event) => {
@@ -49,81 +68,91 @@ class App extends Component {
       return;
     }
 
+    // take out the focus when value is entered
+    document.querySelector("#bedroomCount").blur();
+
     this.setState({ bedroomCount });
   };
 
-  // handleBedroomsInfo = (event) => {
-  //   event.preventDefault();
-  //   const { dimentions, roommates } = this.state;
-  //   // dimentions.length + 1 should be the "roomKey" portion of the id
-  //   const bedroomSize = document.querySelector(
-  //     "bedroomSize" + dimentions.length + 1
-  //   ).value;
-
-  //   const roommatesNumber = document.querySelector(
-  //     "roommatesNumber" + roommates.length + 1
-  //   ).value;
-
-  //   const cloneDimentions = [...dimentions];
-  //   const cloneRoommates = [...roommates];
-
-  //   cloneDimentions.push(bedroomSize);
-  //   cloneRoommates.push(roommatesNumber);
-
-  //   this.setState({ dimentions: cloneDimentions, roommates: cloneRoommates });
-  // };
-
   handleRoomSize = (event, id) => {
-    console.log(id);
+    // Take the input element and put that in the dimentions array
+    // That way we can check that the objects are unique.
+    // Then we can later map the values of each object onto a new array
     event.preventDefault();
     const { dimentions } = this.state;
-    const roomSize = Number(document.getElementById(id).value);
+    const roomSize = document.getElementById(id);
     const cloneDimentions = [...dimentions];
-    cloneDimentions.push(roomSize);
+    if (!dimentions.includes(roomSize)) {
+      cloneDimentions.push(roomSize);
+      // take out the focus when value is entered
+      document.getElementById(id).blur();
+    }
 
     this.setState({ dimentions: cloneDimentions });
   };
 
+  // Take the input element and put that in the roommates array
+  // That way we can check that the objects are unique.
+  // Then we can later map the values of each object onto a new array
   handleRoommates = (event, id) => {
     event.preventDefault();
     const { roommates } = this.state;
-    const numberRoommates = Number(document.getElementById(id).value);
+    const numberRoommates = document.getElementById(id);
     const cloneRoommates = [...roommates];
-    cloneRoommates.push(numberRoommates);
-    // console.log(roommates);
+    if (!roommates.includes(numberRoommates)) {
+      cloneRoommates.push(numberRoommates);
+      // take out the focus when value is entered
+      document.getElementById(id).blur();
+    }
+
+    console.log(document.getElementById(id));
+
     this.setState({ roommates: cloneRoommates });
   };
 
   render() {
     const {
       propertyValue,
-      commonAreasValue,
+      commonAreasPercentage,
       bedroomCount,
       dimentions,
       roommates,
     } = this.state;
 
+    if (document.querySelector("#commonAreaValue")) {
+      document.querySelector("#commonAreaValue").focus();
+    }
     return (
       <React.Fragment>
         <Header />
+        <Image />
         <PropertyValue onClick={(event) => this.handlePropertyValue(event)} />
         <CommonAreas
           propertyValue={propertyValue}
           onClick={(event) => this.handleCommonAreas(event)}
         />
         <BedroomCount
-          commonAreasValue={commonAreasValue}
+          commonAreasPercentage={commonAreasPercentage}
           onClick={(event) => this.handleBedroomCount(event)}
         />
         <BedroomsInfo
           handleRoomSize={(event, id) => this.handleRoomSize(event, id)}
           handleRoommates={(event, id) => this.handleRoommates(event, id)}
           bedroomCount={bedroomCount}
-          // onClick={(event) => this.handleBedroomsInfo(event)}
+          onBlur={(event, id) => {
+            document.getElementById(id).blur();
+            this.handleRoomSize(event);
+            this.handleRoommates(event);
+          }}
+          onClick={(event, id) => {
+            document.getElementById(id).blur();
+            this.handleRoomSize(event);
+            this.handleRoommates(event);
+          }}
         />
         <ResultMessage
           propertyValue={propertyValue}
-          commonAreasValue={commonAreasValue}
+          commonAreasPercentage={commonAreasPercentage}
           bedroomCount={bedroomCount}
           dimentions={dimentions}
           roommates={roommates}
