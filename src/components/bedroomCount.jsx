@@ -1,7 +1,11 @@
 import React from "react";
 
-const BedroomCount = ({ commonAreasPercentage, onClick }) => {
-  if (commonAreasPercentage <= 0) {
+const BedroomCount = ({
+  commonAreasPercentage,
+  onClick,
+  bedroomCountMessage,
+}) => {
+  if (commonAreasPercentage === undefined) {
     return;
   }
 
@@ -10,14 +14,15 @@ const BedroomCount = ({ commonAreasPercentage, onClick }) => {
       <label
         htmlFor="bedroomCount"
         className="col-sm-6 col-form-label text-info"
+        id="bedroomCountLabel"
       >
-        Enter the number of bedrooms
+        {bedroomCountMessage}
       </label>
       <div className="col-2">
         <input
           autoFocus
           type="number"
-          min="2"
+          // min="1"
           className="form-control text-info"
           id="bedroomCount"
           placeholder=""

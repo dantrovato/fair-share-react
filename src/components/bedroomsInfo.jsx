@@ -1,34 +1,60 @@
 import React from "react";
 import _ from "lodash";
 
-const BedroomsInfo = ({ bedroomCount, handleRoomSize, handleRoommates }) => {
-  if (bedroomCount < 2) {
+const BedroomsInfo = ({
+  bedroomCount,
+  handleRoomSize,
+  handleRoommates,
+  bedroomSizeMessage,
+  roommatesMessage,
+}) => {
+  if (bedroomCount < 1) {
     return;
   }
 
   const bedroomsKeys = _.range(1, Number(bedroomCount) + 1);
-  const addFocusToNextInput = (event) => {
-    event.target
-      .closest("form")
-      .nextElementSibling.querySelector("input")
-      .focus();
-  };
+  // const validate = (event) => {
+  //   const value = Number(event.target.value);
+  //   return value > 0 && Number.isInteger(value);
+  // };
+
+  // const addFocusToNextInputOnBlur = (event) => {
+  //   // const input = document.getElementById(id);
+  //   if (!validate(event)) {
+  //     const label = event.target.parentElement.previousElementSibling;
+  //     label.textContent = "Enter whole number that's greater than 0";
+  //     return;
+  //   }
+
+  //   if (
+  //     event.target.closest("form").nextElementSibling.querySelector("input")
+  //   ) {
+  //     event.target
+  //       .closest("form")
+  //       .nextElementSibling.querySelector("input")
+  //       .focus();
+  //   }
+  // };
 
   return bedroomsKeys.map((roomKey) => (
     <React.Fragment>
       <form
         className="row g-3 justify-content-center mb-3"
-        key={"bedroomsForm" + roomKey}
+        key={"bedroomsForm"}
       >
         <label
           key={"roomsLabel" + roomKey}
+          id={"roomsLabel" + roomKey}
           htmlFor={"bedroomSize" + roomKey}
           className="col-sm-6 col-form-label text-info"
         >
+          {/* {bedroomSizeMessage ||
+            `Enter the size of room ${roomKey} in sq metres or feet`} */}
           Enter the size of room {roomKey} in sq metres or feet
         </label>
 
-        <div className="col-2">
+        <div className="col-2" key={"roomsDiv" + roomKey}>
+          {/* {set autoFocus only on the first input} */}
           {roomKey === 1 ? (
             <input
               autoFocus
@@ -37,9 +63,14 @@ const BedroomsInfo = ({ bedroomCount, handleRoomSize, handleRoommates }) => {
               className="form-control text-info"
               id={"bedroomSize" + roomKey}
               placeholder=""
-              onBlur={(event) => {
-                handleRoomSize(event, "bedroomSize" + roomKey);
-                addFocusToNextInput(event);
+              onBlur={(event, id) => {
+                handleRoomSize(
+                  event,
+                  "bedroomSize" + roomKey,
+                  "roomsLabel" + roomKey,
+                  roomKey
+                );
+                // addFocusToNextInputOnBlur(event, id);
               }}
             />
           ) : (
@@ -49,19 +80,30 @@ const BedroomsInfo = ({ bedroomCount, handleRoomSize, handleRoommates }) => {
               className="form-control text-info"
               id={"bedroomSize" + roomKey}
               placeholder=""
-              onBlur={(event) => {
-                handleRoomSize(event, "bedroomSize" + roomKey);
+              onBlur={(event, id) => {
+                handleRoomSize(
+                  event,
+                  "bedroomSize" + roomKey,
+                  "roomsLabel" + roomKey,
+                  roomKey
+                );
+                // addFocusToNextInputOnBlur(event, id);
               }}
             />
           )}
         </div>
 
-        <div className="col-auto">
+        <div className="col-auto" key={"roomsButtonDiv" + roomKey}>
           <button
             key={"roomsButton" + roomKey}
             onClick={(event) => {
-              handleRoomSize(event, "bedroomSize" + roomKey);
-              addFocusToNextInput(event);
+              handleRoomSize(
+                event,
+                "bedroomSize" + roomKey,
+                "roomsLabel" + roomKey,
+                roomKey
+              );
+              // addFocusToNextInput(event);
             }}
             type="submit"
             className="btn btn-primary d-none"
@@ -76,32 +118,45 @@ const BedroomsInfo = ({ bedroomCount, handleRoomSize, handleRoommates }) => {
       >
         <label
           key={"roommatesLabel" + roomKey}
+          id={"roommatesLabel" + roomKey}
           htmlFor={"roomMatesNumber" + roomKey}
           className="col-sm-6 col-form-label text-info"
         >
+          {/* {roommatesMessage || `How many people will be in room ${roomKey}?`} */}
           How many people will be in room {roomKey}?
         </label>
 
-        <div className="col-2">
+        <div className="col-2" key={"roommatesDiv" + roomKey}>
           <input
+            // autoFocus can't hava two of these at same time
             type="number"
             key={"roommatesInput" + roomKey}
             className="form-control text-info"
             id={"roomMatesNumber" + roomKey}
             placeholder=""
-            onBlur={(event) => {
-              handleRoommates(event, "roomMatesNumber" + roomKey);
-              addFocusToNextInput(event);
+            onBlur={(event, id) => {
+              handleRoommates(
+                event,
+                "roomMatesNumber" + roomKey,
+                "roommatesLabel" + roomKey,
+                roomKey
+              );
+              // addFocusToNextInputOnBlur(event, id);
             }}
           />
         </div>
 
-        <div className="col-auto">
+        <div className="col-auto" key={"roommatesButtonDiv" + roomKey}>
           <button
             key={"roommatesButton" + roomKey}
             onClick={(event) => {
-              handleRoommates(event, "roomMatesNumber" + roomKey);
-              addFocusToNextInput(event);
+              handleRoommates(
+                event,
+                "roomMatesNumber" + roomKey,
+                "roommatesLabel" + roomKey,
+                roomKey
+              );
+              // addFocusToNextInput(event);
             }}
             type="submit"
             className="btn btn-primary d-none"

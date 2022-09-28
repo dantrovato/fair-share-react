@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import _ from "lodash";
 
-// separate common areas from rooms
-// divide common areas by number of flatmates
-// map dimentions into array of percentages of the rooms total
-
 let ResultMessage = ({
-  // Update any code that uses the items in dimentions and to use the items.value
-
   propertyValue,
   commonAreasPercentage,
   bedroomCount,
@@ -36,85 +30,75 @@ let ResultMessage = ({
       return (size * bedroomsValue) / totalArea;
     });
 
+    function highlightFirstInvalid(array) {
+      // array.forEach((num, index) => {
+      //   if (num <= 0) {
+      //     console.log(array[index]);
+      //   }
+      // });
+
+      [...document.querySelectorAll("input")]
+        .filter((input) => !input.value)
+        .forEach((input) => {
+          input.classList.add("border");
+          input.classList.add("border-danger");
+          input.focus();
+        });
+    }
+
+    if (_.some(dimentions, (num) => num <= 0)) {
+      highlightFirstInvalid(dimentions);
+    } else if (_.some(roommates, (num) => num <= 0)) {
+      highlightFirstInvalid(roommates);
+    }
+
     return (
       <React.Fragment>
-        <h1 className="text-center text-success">Results</h1>
-        {costOfEachRoomArray.map((roomCost, index) => (
-          <p className="text-center text-light bg-dark" key={index + 1}>
-            Room {index + 1} has {roommates[index]} roommate
-            {roommates[index] === 1 ? "" : "s"}. It costs{" "}
-            {(roomCost / roommates[index] + commonAreaPriceForEach).toFixed(2)}{" "}
-            each.
+        <div className="col-md-5 mx-auto mt-5 bg-info" id="header">
+          <h1 className="display-4 fw-normal text-center">Results</h1>
+
+          {costOfEachRoomArray.map((roomCost, index) => (
+            <p
+              className="text-center text-light bg-info p-2 m-0"
+              key={index + 1}
+            >
+              Room {index + 1} has {roommates[index]} roommate
+              {roommates[index] === 1 ? "" : "s"}. It costs{" "}
+              {(roomCost / roommates[index] + commonAreaPriceForEach).toFixed(
+                2
+              )}{" "}
+              each.
+            </p>
+          ))}
+        </div>
+        <div className="col-md-5 mx-auto" id="header">
+          <h1 className="text-center text-info m-5">The breakdown</h1>
+
+          <p className="text-center text-info p-2 m-0">
+            The value of common area is {commonAreaValue}
           </p>
-        ))}
-        <h2 className="text-center text-success">The breakdown</h2>
 
-        <p className="text-center text-light bg-dark">
-          The value of common area is {commonAreaValue}
-        </p>
-
-        <p className="text-center text-light bg-dark">
-          The value of all the rooms combined is {bedroomsValue.toFixed(2)}
-        </p>
-
-        <p className="text-center text-light bg-dark">
-          Each flatmate pays {commonAreaPriceForEach.toFixed(2)} for an equal
-          share of the common areas
-        </p>
-
-        {costOfEachRoomArray.map((roomCost, index) => (
-          <p className="text-center text-light bg-dark" key={index + 1}>
-            Room {index + 1} costs {roomCost.toFixed(2)}. It has{" "}
-            {roommates[index]} roommate
-            {roommates[index] === 1 ? "" : "s"} paying{" "}
-            {(roomCost / roommates[index]).toFixed(2)} each
+          <p className="text-center text-info p-2 m-0">
+            The value of all the rooms combined is {bedroomsValue.toFixed(2)}
           </p>
-        ))}
+
+          <p className="text-center text-info p-2 m-0">
+            Each flatmate pays {commonAreaPriceForEach.toFixed(2)} for an equal
+            share of the common areas
+          </p>
+
+          {costOfEachRoomArray.map((roomCost, index) => (
+            <p className="text-center text-info p-2 m-0" key={index + 1}>
+              Room {index + 1} costs {roomCost.toFixed(2)}. It has{" "}
+              {roommates[index]} roommate
+              {roommates[index] === 1 ? "" : "s"} paying{" "}
+              {(roomCost / roommates[index]).toFixed(2)} each
+            </p>
+          ))}
+        </div>
       </React.Fragment>
     );
   }
-
-  // if no value for the cost of the property is set don't display a result message
-  // if (propertyValue <= 0) {
-  //   return;
-  // }
-
-  // if (propertyValue > 0 && commonAreasPercentage <= 0) {
-  //   return (
-  //     <p className="text-center">
-  //       There rent for the entire property is {propertyValue}
-  //     </p>
-  //   );
-  // }
-
-  // if (commonAreasPercentage > 0 && bedroomCount <= 0) {
-  //   return (
-  //     <React.Fragment>
-  //       <p className="text-center">
-  //         There rent for the entire property is {propertyValue}
-  //       </p>
-  //       <p className="text-center">
-  //         The value of the common areas is {commonAreasPercentage}% (
-  //         {commonAreaValue})
-  //       </p>
-  //     </React.Fragment>
-  //   );
-  // }
-
-  // return (
-  //   <React.Fragment>
-  //     <p className="text-center">
-  //       There rent for the entire property is {propertyValue}
-  //     </p>
-  //     <p className="text-center">
-  //       The value of the common areas is {commonAreasPercentage}% (
-  //       {commonAreaValue})
-  //     </p>
-  //     <p className="text-center">
-  //       There are {bedroomCount} bedrooms in the property
-  //     </p>
-  //   </React.Fragment>
-  // );
 };
 
 export default ResultMessage;

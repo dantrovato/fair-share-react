@@ -1,23 +1,15 @@
 import React, { Component } from "react";
 
 class PropertyValue extends Component {
-  // constructor() {
-  //   super();
-  //   console.log("PropertyValue - Constructor");
-  //   // document.querySelector("#propertyValue").focus();
-  // }
-  // componentDidMount() {
-  //   document.querySelector("#propertyValue").focus();
-  // }
-
   render() {
     return (
       <form className="row g-3 justify-content-center mb-3 background">
         <label
           htmlFor="propertyValue"
           className="col-sm-6 col-form-label text-info"
+          id="propertyValueLabel"
         >
-          Enter the cost of the entire property
+          {this.props.propertyValueMessage}
         </label>
         <div className="col-2">
           <input
@@ -26,9 +18,8 @@ class PropertyValue extends Component {
             min="1"
             className="form-control text-info"
             id="propertyValue"
-            placeholder=""
+            placeholder="$"
             onBlur={this.props.onClick}
-            ref={(x) => (this.propertyValue = x)}
           />
         </div>
         {

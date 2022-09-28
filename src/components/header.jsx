@@ -5,7 +5,7 @@ class Header extends Component {
       <div className="col-md-5 p-lg-5 mx-auto mb-5 bg-info" id="header">
         <h1 className="display-4 fw-normal text-center">Fair Share</h1>
         <p className="lead fw-normal text-center">
-          To help you decide who should pay what
+          The help you need to decide who should pay what
         </p>
       </div>
     );

@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 
 class CommonAreas extends Component {
-  // NOT SURE WHY THIS ISN'T WORKING
-  // componentDidMount() {
-  //   console.log("CommonAreas - componentDidMount");
-  //   document.querySelector("#commonAreasValue").focus();
-  // }
-
   render() {
-    const { propertyValue, onClick } = this.props;
-    console.log("CommonAreas - Render");
+    const { propertyValue, onClick, onBlur, commonAreasMessage } = this.props;
     let display;
     if (propertyValue <= 0) {
       return;
@@ -20,18 +13,19 @@ class CommonAreas extends Component {
         <label
           htmlFor="commonAreasValue"
           className="col-sm-6 col-form-label text-info"
+          id="commonAreasLabel"
         >
-          Enter value of common areas
+          {commonAreasMessage}
         </label>
         <div className="col-2">
           <input
             autoFocus
             type="number"
-            min="2"
+            min="0"
             className="form-control text-info"
             id="commonAreasValue"
-            placeholder=""
-            onBlur={onClick}
+            placeholder="%"
+            onBlur={onBlur}
           />
         </div>
         {
@@ -41,6 +35,7 @@ class CommonAreas extends Component {
         <div className="col-auto d-none">
           <button
             onClick={onClick}
+            // onBlur={onBlur}
             type="submit"
             className="btn btn-primary mb-3"
           >
