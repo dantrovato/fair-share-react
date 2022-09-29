@@ -12,23 +12,10 @@ import Image from "./components/image";
 import Footer from "./components/footer";
 import { isInteger, remove } from "lodash";
 // fix:
-// show error if any inputs are missing
-// Remove Each child in a list should have a unique "key" prop from BedroomsInfo component.
-// make border red
-// remove focus to inputs edited after results shown
-// add bottom padding to cyan result div
-// move writing on footer to the bottom
-// remove decimal points from inputs on roommates and number of rooms
-// make image load from file instead of url
 // make sure focus goes on input clicked
+// make image load from file instead of url
 // customise colors
-// make view scroll up automatically
 // swap with other fairshare
-
-// fixed:
-// Adjust positioning on results section
-// Remove document.querySelector('#propertyValue').blur(); (and from other inputs) to take out the focus when value is entered as adding the autoFocus does that for us anyways.
-// make placeholders same color as text
 
 class App extends Component {
   state = {
@@ -74,6 +61,7 @@ class App extends Component {
     this.removeErrorStyles(label);
     propertyValueMessage = `The rent for the entire property is $${propertyValue}`;
     this.setState({ propertyValue, propertyValueMessage });
+    this.addFocusToNextInput(event);
   };
 
   handleCommonAreas = (event) => {
@@ -94,6 +82,7 @@ class App extends Component {
     this.removeErrorStyles(label);
     commonAreasMessage = `The value of the common area is ${commonAreasPercentage}%`;
     this.setState({ commonAreasPercentage, commonAreasMessage });
+    this.addFocusToNextInput(event);
   };
 
   handleBedroomCount = (event) => {
@@ -121,6 +110,7 @@ class App extends Component {
     this.removeErrorStyles(label);
     bedroomCountMessage = `There property has ${bedroomCount} bedrooms`;
     this.setState({ bedroomCount, bedroomCountMessage });
+    this.addFocusToNextInput(event);
   };
 
   // helper method for handleRoomSize and handleRoommates
@@ -132,6 +122,7 @@ class App extends Component {
         .closest("form")
         .nextElementSibling.querySelector("input")
         .focus();
+      return;
     }
   };
 
