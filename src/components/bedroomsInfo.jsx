@@ -39,7 +39,10 @@ const BedroomsInfo = ({
   return bedroomsKeys.map((roomKey) => (
     <React.Fragment>
       <form className="m-3" key={"bedroomsForm" + roomKey}>
-        <div className="form-group m-auto text-center justify-content-center">
+        <div
+          className="form-group m-auto text-center justify-content-center"
+          key={"bedroomsDiv" + roomKey}
+        >
           <label
             key={"roomsLabel" + roomKey}
             id={"roomsLabel" + roomKey}
@@ -55,7 +58,7 @@ const BedroomsInfo = ({
               autoFocus
               type="number"
               key={"roomsInput" + roomKey}
-              className="form-control text-info col-auto"
+              className="form-control text-info col-auto text-center mt-3"
               id={"bedroomSize" + roomKey}
               placeholder=""
               onBlur={(event, id) => {
@@ -72,7 +75,7 @@ const BedroomsInfo = ({
             <input
               type="number"
               key={"roomsInput" + roomKey}
-              className="form-control text-info col-auto"
+              className="form-control text-info col-auto text-center mt-3"
               id={"bedroomSize" + roomKey}
               placeholder=""
               onBlur={(event, id) => {
@@ -105,7 +108,10 @@ const BedroomsInfo = ({
         </div>
       </form>
       <form key={"roomatesForm" + roomKey}>
-        <div className="form-group m-auto text-center justify-content-center">
+        <div
+          className="form-group m-auto text-center justify-content-center"
+          key={"roommatesDiv" + roomKey}
+        >
           <label
             key={"roommatesLabel" + roomKey}
             id={"roommatesLabel" + roomKey}
@@ -119,7 +125,7 @@ const BedroomsInfo = ({
             // autoFocus can't hava two of these at same time
             type="number"
             key={"roommatesInput" + roomKey}
-            className="form-control text-info"
+            className="form-control text-info text-center mt-3"
             id={"roomMatesNumber" + roomKey}
             placeholder=""
             onBlur={(event, id) => {

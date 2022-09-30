@@ -52,7 +52,7 @@ const BedroomCount = ({
           autoFocus
           type="number"
           // min="1"
-          className="form-control text-info"
+          className="form-control text-info text-center mt-3"
           id="bedroomCount"
           placeholder=""
           onBlur={onClick}

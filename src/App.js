@@ -43,7 +43,6 @@ class App extends Component {
 
   handlePropertyValue = (event) => {
     event.preventDefault();
-    console.log("handlePropertyValue:", event.target.tagName);
     const input = document.querySelector("#propertyValue");
     const label = document.querySelector("#propertyValueLabel");
     const propertyValue = Number(input.value);

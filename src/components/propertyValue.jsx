@@ -16,7 +16,7 @@ class PropertyValue extends Component {
             autoFocus
             type="number"
             min="1"
-            className="form-control text-info"
+            className="form-control text-info text-center mt-3"
             id="propertyValue"
             placeholder="$"
             onBlur={this.props.onClick}

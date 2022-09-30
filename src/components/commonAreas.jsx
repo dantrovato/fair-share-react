@@ -22,7 +22,7 @@ class CommonAreas extends Component {
             autoFocus
             type="number"
             min="0"
-            className="form-control text-info"
+            className="form-control text-info text-center mt-3"
             id="commonAreasValue"
             placeholder="%"
             onBlur={onBlur}
