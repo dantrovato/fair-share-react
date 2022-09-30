@@ -3,15 +3,15 @@ import React, { Component } from "react";
 class PropertyValue extends Component {
   render() {
     return (
-      <form className="row g-3 justify-content-center mb-3 background">
+      <form className="row g-3 justify-content-around mb-3 background">
         <label
           htmlFor="propertyValue"
-          className="col-sm-6 col-form-label text-info"
+          className="col-3 col-form-label text-info"
           id="propertyValueLabel"
         >
           {this.props.propertyValueMessage}
         </label>
-        <div className="col-2">
+        <div className="col-auto">
           <input
             autoFocus
             type="number"

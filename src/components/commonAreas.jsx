@@ -9,15 +9,15 @@ class CommonAreas extends Component {
     }
 
     return (
-      <form className={`row g-3 justify-content-center mb-3 ${display}`}>
+      <form className={`row g-3 justify-content-around mb-3 ${display}`}>
         <label
           htmlFor="commonAreasValue"
-          className="col-sm-6 col-form-label text-info"
+          className="col-3 col-form-label text-info"
           id="commonAreasLabel"
         >
           {commonAreasMessage}
         </label>
-        <div className="col-2">
+        <div className="col-auto">
           <input
             autoFocus
             type="number"

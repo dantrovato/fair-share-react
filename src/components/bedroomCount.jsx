@@ -10,15 +10,15 @@ const BedroomCount = ({
   }
 
   return (
-    <form className="row g-3 justify-content-center mb-3">
+    <form className="row g-3 justify-content-around mb-3">
       <label
         htmlFor="bedroomCount"
-        className="col-sm-6 col-form-label text-info"
+        className="col-3 col-form-label text-info"
         id="bedroomCountLabel"
       >
         {bedroomCountMessage}
       </label>
-      <div className="col-2">
+      <div className="col-auto">
         <input
           autoFocus
           type="number"

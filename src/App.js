@@ -22,8 +22,7 @@ class App extends Component {
     propertyValue: 0,
     propertyValueMessage: "Enter the rent for the entire property",
     commonAreasPercentage: undefined,
-    commonAreasMessage:
-      "Enter value of common areas as a percentage of entire property",
+    commonAreasMessage: "Enter value of common areas",
     bedroomCount: 0,
     bedroomCountMessage: "Enter the number of bedrooms",
     dimentions: [],
