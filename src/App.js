@@ -10,7 +10,7 @@ import BedroomsInfo from "./components/bedroomsInfo";
 import ResultMessage from "./components/resultMessage";
 import Image from "./components/image";
 import Footer from "./components/footer";
-import { isInteger, remove } from "lodash";
+
 // fix:
 // make sure focus goes on input clicked
 // make image load from file instead of url
@@ -44,6 +44,7 @@ class App extends Component {
 
   handlePropertyValue = (event) => {
     event.preventDefault();
+    console.log("handlePropertyValue:", event.target.tagName);
     const input = document.querySelector("#propertyValue");
     const label = document.querySelector("#propertyValueLabel");
     const propertyValue = Number(input.value);
@@ -66,6 +67,7 @@ class App extends Component {
 
   handleCommonAreas = (event) => {
     event.preventDefault();
+    console.log("handleCommonAreas:", event.target.tagName);
     const input = document.querySelector("#commonAreasValue");
     const label = document.querySelector("#commonAreasLabel");
     const commonAreasPercentage = Number(input.value);
@@ -87,6 +89,7 @@ class App extends Component {
 
   handleBedroomCount = (event) => {
     event.preventDefault();
+    console.log("handleBedroomCount:", event.target.tagName);
     const input = document.querySelector("#bedroomCount");
     const label = document.querySelector("#bedroomCountLabel");
     const bedroomCount = Number(input.value);
@@ -126,11 +129,6 @@ class App extends Component {
     }
   };
 
-  // code taken from below line: const label = document.getElementById(labelId);
-  // let bedroomSizeMessage;
-  // this.state.bedroomSizeMessage = `Enter the size of room ${roomKey} in sq metres or feet`;
-  // bedroomSizeMessage = this.state.bedroomSizeMessage;
-  // this.setState({ bedroomSizeMessage });
   handleRoomSize = (event, id, labelId, roomKey) => {
     // Take the input element and put that in the dimentions array. That way we can check that the objects are unique. Then we can later map the values of each object onto a new array
     event.preventDefault();
