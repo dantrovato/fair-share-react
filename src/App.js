@@ -46,7 +46,7 @@ class App extends Component {
     const input = document.querySelector("#propertyValue");
     const label = document.querySelector("#propertyValueLabel");
     const propertyValue = Number(input.value);
-    let propertyValueMessage;
+    // let propertyValueMessage;
     // resets the input display to a valid number in case somebody enters 00009 or some nonsense
     input.value = propertyValue;
 
@@ -70,7 +70,7 @@ class App extends Component {
     const input = document.querySelector("#commonAreasValue");
     const label = document.querySelector("#commonAreasLabel");
     const commonAreasPercentage = Number(input.value);
-    let commonAreasMessage;
+    // let commonAreasMessage;
     input.value = commonAreasPercentage;
 
     if (commonAreasPercentage < 0 || commonAreasPercentage > 100) {

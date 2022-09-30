@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class CommonAreas extends Component {
   render() {
     const { propertyValue, onClick, onBlur, commonAreasMessage } = this.props;
-    let display;
     if (propertyValue <= 0) {
       return;
     }
