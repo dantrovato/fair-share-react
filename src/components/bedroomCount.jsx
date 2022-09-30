@@ -9,16 +9,45 @@ const BedroomCount = ({
     return;
   }
 
+  // <form>
+  //   <div className="form-group">
+  //     <label
+  //       htmlFor="commonAreasValue"
+  //       className="text-info"
+  //       id="commonAreasLabel"
+  //     >
+  //       {commonAreasMessage}
+  //     </label>
+  //     <input
+  //       autoFocus
+  //       type="number"
+  //       min="0"
+  //       className="form-control text-info"
+  //       id="commonAreasValue"
+  //       placeholder="%"
+  //       onBlur={onBlur}
+  //     />
+  //     <button
+  //       onClick={onClick}
+  //       // onBlur={onBlur}
+  //       type="submit"
+  //       className="btn btn-primary d-none"
+  //     >
+  //       Enter
+  //     </button>
+  //   </div>
+  // </form>;
+
   return (
-    <form className="row g-3 justify-content-around mb-3">
-      <label
-        htmlFor="bedroomCount"
-        className="col-3 col-form-label text-info"
-        id="bedroomCountLabel"
-      >
-        {bedroomCountMessage}
-      </label>
-      <div className="col-auto">
+    <form className="m-3">
+      <div className="form-group m-auto text-center justify-content-center">
+        <label
+          htmlFor="bedroomCount"
+          className="text-info"
+          id="bedroomCountLabel"
+        >
+          {bedroomCountMessage}
+        </label>
         <input
           autoFocus
           type="number"
@@ -28,9 +57,11 @@ const BedroomCount = ({
           placeholder=""
           onBlur={onClick}
         />
-      </div>
-      <div className="col-auto d-none">
-        <button onClick={onClick} type="submit" className="btn btn-primary">
+        <button
+          onClick={onClick}
+          type="submit"
+          className="btn btn-primary d-none"
+        >
           Enter
         </button>
       </div>

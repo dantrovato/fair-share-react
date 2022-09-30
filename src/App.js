@@ -52,15 +52,16 @@ class App extends Component {
     input.value = propertyValue;
 
     if (propertyValue <= 0) {
-      propertyValueMessage = "Enter a number greater than 0";
-      this.setState({ propertyValueMessage });
+      // propertyValueMessage = "Enter a number greater than 0";
+      // this.setState({ propertyValueMessage });
       this.addErrorStyles(label);
       return;
     }
 
     this.removeErrorStyles(label);
-    propertyValueMessage = `The rent for the entire property is $${propertyValue}`;
-    this.setState({ propertyValue, propertyValueMessage });
+    // propertyValueMessage = `The rent for the entire property is $${propertyValue}`;
+    // this.setState({ propertyValue, propertyValueMessage });
+    this.setState({ propertyValue });
     this.addFocusToNextInput(event);
   };
 
@@ -74,15 +75,16 @@ class App extends Component {
     input.value = commonAreasPercentage;
 
     if (commonAreasPercentage < 0 || commonAreasPercentage > 100) {
-      commonAreasMessage = "Enter a number between 0 and 100";
-      this.setState({ commonAreasMessage });
+      // commonAreasMessage = "Enter a number between 0 and 100";
+      // this.setState({ commonAreasMessage });
       this.addErrorStyles(label);
       return;
     }
 
     this.removeErrorStyles(label);
-    commonAreasMessage = `The value of the common area is ${commonAreasPercentage}%`;
-    this.setState({ commonAreasPercentage, commonAreasMessage });
+    // commonAreasMessage = `The value of the common area is ${commonAreasPercentage}%`;
+    // this.setState({ commonAreasPercentage, commonAreasMessage });
+    this.setState({ commonAreasPercentage });
     this.addFocusToNextInput(event);
   };
 
@@ -92,26 +94,27 @@ class App extends Component {
     const input = document.querySelector("#bedroomCount");
     const label = document.querySelector("#bedroomCountLabel");
     const bedroomCount = Number(input.value);
-    let bedroomCountMessage;
+    // let bedroomCountMessage;
     input.value = bedroomCount;
 
     if (bedroomCount < 1) {
-      bedroomCountMessage = "Enter a number greater than 0";
-      this.setState({ bedroomCountMessage });
+      // bedroomCountMessage = "Enter a number greater than 0";
+      // this.setState({ bedroomCountMessage });
       this.addErrorStyles(label);
       return;
     }
 
     if (!Number.isInteger(bedroomCount)) {
-      bedroomCountMessage = "Enter a whole number";
-      this.setState({ bedroomCountMessage });
+      // bedroomCountMessage = "Enter a whole number";
+      // this.setState({ bedroomCountMessage });
       this.addErrorStyles(label);
       return;
     }
 
     this.removeErrorStyles(label);
-    bedroomCountMessage = `There property has ${bedroomCount} bedrooms`;
-    this.setState({ bedroomCount, bedroomCountMessage });
+    // bedroomCountMessage = `There property has ${bedroomCount} bedrooms`;
+    // this.setState({ bedroomCount, bedroomCountMessage });
+    this.setState({ bedroomCount });
     this.addFocusToNextInput(event);
   };
 
@@ -142,13 +145,13 @@ class App extends Component {
 
     if (roomSize.value <= 0) {
       const label = document.getElementById(labelId);
-      label.textContent = "Enter a number greater than 0";
+      // label.textContent = "Enter a number greater than 0";
       this.addErrorStyles(label);
       return;
     }
 
     roomSize.value = Number(roomSize.value);
-    label.textContent = `The size of room ${roomKey} is ${roomSize.value}`;
+    // label.textContent = `The size of room ${roomKey} is ${roomSize.value}`;
     this.removeErrorStyles(label);
     this.setState({ dimentions: cloneDimentions });
     this.addFocusToNextInput(event);
@@ -167,13 +170,13 @@ class App extends Component {
 
     const value = Number(numberRoommates.value);
     if (value <= 0 || !Number.isInteger(value)) {
-      label.textContent = "Enter a whole number greater than 0";
+      // label.textContent = "Enter a whole number greater than 0";
       this.addErrorStyles(label);
       return;
     }
 
     numberRoommates.value = Number(numberRoommates.value);
-    label.textContent = `There will be ${numberRoommates.value} person in this room`;
+    // label.textContent = `There will be ${numberRoommates.value} person in this room`;
     this.removeErrorStyles(label);
     this.setState({ roommates: cloneRoommates });
     this.addFocusToNextInput(event);

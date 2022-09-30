@@ -38,23 +38,18 @@ const BedroomsInfo = ({
 
   return bedroomsKeys.map((roomKey) => (
     <React.Fragment>
-      <form
-        className="row g-3 justify-content-around mb-3"
-        key={"bedroomsForm"}
-      >
-        <label
-          key={"roomsLabel" + roomKey}
-          id={"roomsLabel" + roomKey}
-          htmlFor={"bedroomSize" + roomKey}
-          className="col-3 col-form-label text-info"
-        >
-          {/* {bedroomSizeMessage ||
+      <form className="m-3" key={"bedroomsForm" + roomKey}>
+        <div className="form-group m-auto text-center justify-content-center">
+          <label
+            key={"roomsLabel" + roomKey}
+            id={"roomsLabel" + roomKey}
+            htmlFor={"bedroomSize" + roomKey}
+            className="text-info"
+          >
+            {/* {bedroomSizeMessage ||
             `Enter the size of room ${roomKey} in sq metres or feet`} */}
-          Enter the size of room {roomKey} in sq metres or feet
-        </label>
-
-        <div className="col-auto" key={"roomsDiv" + roomKey}>
-          {/* {set autoFocus only on the first input} */}
+            Enter size of room {roomKey} in any measurement
+          </label>
           {roomKey === 1 ? (
             <input
               autoFocus
@@ -91,9 +86,6 @@ const BedroomsInfo = ({
               }}
             />
           )}
-        </div>
-
-        <div className="col-auto d-none" key={"roomsButtonDiv" + roomKey}>
           <button
             key={"roomsButton" + roomKey}
             onClick={(event) => {
@@ -112,21 +104,17 @@ const BedroomsInfo = ({
           </button>
         </div>
       </form>
-      <form
-        className="row g-3 justify-content-around mb-3"
-        key={"roomatesForm" + roomKey}
-      >
-        <label
-          key={"roommatesLabel" + roomKey}
-          id={"roommatesLabel" + roomKey}
-          htmlFor={"roomMatesNumber" + roomKey}
-          className="col-3 col-form-label text-info"
-        >
-          {/* {roommatesMessage || `How many people will be in room ${roomKey}?`} */}
-          How many people will be in room {roomKey}?
-        </label>
-
-        <div className="col-auto" key={"roommatesDiv" + roomKey}>
+      <form key={"roomatesForm" + roomKey}>
+        <div className="form-group m-auto text-center justify-content-center">
+          <label
+            key={"roommatesLabel" + roomKey}
+            id={"roommatesLabel" + roomKey}
+            htmlFor={"roomMatesNumber" + roomKey}
+            className="text-info"
+          >
+            {/* {roommatesMessage || `How many people will be in room ${roomKey}?`} */}
+            How many people will be in room {roomKey}?
+          </label>
           <input
             // autoFocus can't hava two of these at same time
             type="number"
@@ -144,9 +132,6 @@ const BedroomsInfo = ({
               // addFocusToNextInputOnBlur(event, id);
             }}
           />
-        </div>
-
-        <div className="col-auto d-none" key={"roommatesButtonDiv" + roomKey}>
           <button
             key={"roommatesButton" + roomKey}
             onClick={(event) => {

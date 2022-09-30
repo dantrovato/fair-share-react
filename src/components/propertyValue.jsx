@@ -3,15 +3,15 @@ import React, { Component } from "react";
 class PropertyValue extends Component {
   render() {
     return (
-      <form className="row g-3 justify-content-around mb-3 background">
-        <label
-          htmlFor="propertyValue"
-          className="col-3 col-form-label text-info"
-          id="propertyValueLabel"
-        >
-          {this.props.propertyValueMessage}
-        </label>
-        <div className="col-auto">
+      <form className="m-3">
+        <div className="form-group m-auto text-center justify-content-center">
+          <label
+            htmlFor="propertyValue"
+            className="text-info"
+            id="propertyValueLabel"
+          >
+            {this.props.propertyValueMessage}
+          </label>
           <input
             autoFocus
             type="number"
@@ -21,16 +21,10 @@ class PropertyValue extends Component {
             placeholder="$"
             onBlur={this.props.onClick}
           />
-        </div>
-        {
-          // this div isn't displayed but I keep it because otherwise the
-          // enter button doesn't work
-        }
-        <div className="col-auto d-none">
           <button
             onClick={this.props.onClick}
             type="submit"
-            className="btn btn-primary mb-3"
+            className="btn btn-primary d-none"
           >
             Enter
           </button>

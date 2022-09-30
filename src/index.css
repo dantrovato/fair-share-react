@@ -21,12 +21,6 @@ code {
   color: white;
 }
 
-div.col-auto {
-  /* margin: 0; */
-  padding-right: 0;
-  padding-left: 0;
-}
-
 .image {
   height: 25rem;
   background-size: cover;
@@ -38,8 +32,10 @@ div.col-auto {
   color: #5bc0de;
 }
 
-/* .form-control:focus {
-  border-color: #ff80ff;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset,
-    0px 0px 8px rgba(255, 100, 255, 0.5);
-} */
+form {
+  display: flex;
+}
+
+.form-group {
+  width: 20rem;
+}
