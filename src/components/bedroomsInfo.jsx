@@ -13,105 +13,77 @@ const BedroomsInfo = ({
   }
 
   const bedroomsKeys = _.range(1, Number(bedroomCount) + 1);
-  // const validate = (event) => {
-  //   const value = Number(event.target.value);
-  //   return value > 0 && Number.isInteger(value);
-  // };
-
-  // const addFocusToNextInputOnBlur = (event) => {
-  //   // const input = document.getElementById(id);
-  //   if (!validate(event)) {
-  //     const label = event.target.parentElement.previousElementSibling;
-  //     label.textContent = "Enter whole number that's greater than 0";
-  //     return;
-  //   }
-
-  //   if (
-  //     event.target.closest("form").nextElementSibling.querySelector("input")
-  //   ) {
-  //     event.target
-  //       .closest("form")
-  //       .nextElementSibling.querySelector("input")
-  //       .focus();
-  //   }
-  // };
 
   return bedroomsKeys.map((roomKey) => (
     <React.Fragment>
       <form className="m-3" key={"bedroomsForm" + roomKey}>
-        <div
-          className="form-group m-auto text-center justify-content-center"
-          key={"bedroomsDiv" + roomKey}
-        >
+        <div className="form-group m-auto" key={"bedroomsDiv" + roomKey}>
           <label
             key={"roomsLabel" + roomKey}
             id={"roomsLabel" + roomKey}
             htmlFor={"bedroomSize" + roomKey}
             className="text-info"
           >
-            {/* {bedroomSizeMessage ||
-            `Enter the size of room ${roomKey} in sq metres or feet`} */}
             Enter size of room {roomKey} in any measurement
           </label>
-          {roomKey === 1 ? (
-            <input
-              autoFocus
-              type="number"
-              key={"roomsInput" + roomKey}
-              className="form-control text-info col-auto text-center mt-3"
-              id={"bedroomSize" + roomKey}
-              placeholder=""
-              onBlur={(event, id) => {
+          <div className="submitDiv">
+            {roomKey === 1 ? (
+              <input
+                autoFocus
+                type="number"
+                key={"roomsInput" + roomKey}
+                className="form-control text-info col-auto mt-3"
+                id={"bedroomSize" + roomKey}
+                placeholder=""
+                onBlur={(event, id) => {
+                  handleRoomSize(
+                    event,
+                    "bedroomSize" + roomKey,
+                    "roomsLabel" + roomKey,
+                    roomKey
+                  );
+                  // addFocusToNextInputOnBlur(event, id);
+                }}
+              />
+            ) : (
+              <input
+                type="number"
+                key={"roomsInput" + roomKey}
+                className="form-control text-info col-auto mt-3"
+                id={"bedroomSize" + roomKey}
+                placeholder=""
+                onBlur={(event, id) => {
+                  handleRoomSize(
+                    event,
+                    "bedroomSize" + roomKey,
+                    "roomsLabel" + roomKey,
+                    roomKey
+                  );
+                  // addFocusToNextInputOnBlur(event, id);
+                }}
+              />
+            )}
+            <button
+              key={"roomsButton" + roomKey}
+              onClick={(event) => {
                 handleRoomSize(
                   event,
                   "bedroomSize" + roomKey,
                   "roomsLabel" + roomKey,
                   roomKey
                 );
-                // addFocusToNextInputOnBlur(event, id);
+                // addFocusToNextInput(event);
               }}
-            />
-          ) : (
-            <input
-              type="number"
-              key={"roomsInput" + roomKey}
-              className="form-control text-info col-auto text-center mt-3"
-              id={"bedroomSize" + roomKey}
-              placeholder=""
-              onBlur={(event, id) => {
-                handleRoomSize(
-                  event,
-                  "bedroomSize" + roomKey,
-                  "roomsLabel" + roomKey,
-                  roomKey
-                );
-                // addFocusToNextInputOnBlur(event, id);
-              }}
-            />
-          )}
-          <button
-            key={"roomsButton" + roomKey}
-            onClick={(event) => {
-              handleRoomSize(
-                event,
-                "bedroomSize" + roomKey,
-                "roomsLabel" + roomKey,
-                roomKey
-              );
-              // addFocusToNextInput(event);
-            }}
-            type="submit"
-            className="btn btn-primary d-none"
-          >
-            Enter
-          </button>
+              type="submit"
+              className="btn btn-danger m-2"
+            >
+              Enter
+            </button>
+          </div>
         </div>
       </form>
       <form key={"roomatesForm" + roomKey}>
-        <div
-          className="form-group m-auto text-center justify-content-center"
-          key={"roommatesDiv" + roomKey}
-        >
+        <div className="form-group m-auto" key={"roommatesDiv" + roomKey}>
           <label
             key={"roommatesLabel" + roomKey}
             id={"roommatesLabel" + roomKey}
@@ -121,39 +93,41 @@ const BedroomsInfo = ({
             {/* {roommatesMessage || `How many people will be in room ${roomKey}?`} */}
             How many people will be in room {roomKey}?
           </label>
-          <input
-            // autoFocus can't hava two of these at same time
-            type="number"
-            key={"roommatesInput" + roomKey}
-            className="form-control text-info text-center mt-3"
-            id={"roomMatesNumber" + roomKey}
-            placeholder=""
-            onBlur={(event, id) => {
-              handleRoommates(
-                event,
-                "roomMatesNumber" + roomKey,
-                "roommatesLabel" + roomKey,
-                roomKey
-              );
-              // addFocusToNextInputOnBlur(event, id);
-            }}
-          />
-          <button
-            key={"roommatesButton" + roomKey}
-            onClick={(event) => {
-              handleRoommates(
-                event,
-                "roomMatesNumber" + roomKey,
-                "roommatesLabel" + roomKey,
-                roomKey
-              );
-              // addFocusToNextInput(event);
-            }}
-            type="submit"
-            className="btn btn-primary d-none"
-          >
-            Enter
-          </button>
+          <div className="submitDiv">
+            <input
+              // autoFocus can't hava two of these at same time
+              type="number"
+              key={"roommatesInput" + roomKey}
+              className="form-control text-info mt-3"
+              id={"roomMatesNumber" + roomKey}
+              placeholder=""
+              onBlur={(event, id) => {
+                handleRoommates(
+                  event,
+                  "roomMatesNumber" + roomKey,
+                  "roommatesLabel" + roomKey,
+                  roomKey
+                );
+                // addFocusToNextInputOnBlur(event, id);
+              }}
+            />
+            <button
+              key={"roommatesButton" + roomKey}
+              onClick={(event) => {
+                handleRoommates(
+                  event,
+                  "roomMatesNumber" + roomKey,
+                  "roommatesLabel" + roomKey,
+                  roomKey
+                );
+                // addFocusToNextInput(event);
+              }}
+              type="submit"
+              className="btn btn-danger m-2"
+            >
+              Enter
+            </button>
+          </div>
         </div>
       </form>
     </React.Fragment>

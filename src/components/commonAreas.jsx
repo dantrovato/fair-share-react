@@ -9,7 +9,7 @@ class CommonAreas extends Component {
 
     return (
       <form className="m-3">
-        <div className="form-group m-auto text-center justify-content-center">
+        <div className="form-group m-auto">
           <label
             htmlFor="commonAreasValue"
             className="text-info"
@@ -17,23 +17,25 @@ class CommonAreas extends Component {
           >
             {commonAreasMessage}
           </label>
-          <input
-            autoFocus
-            type="number"
-            min="0"
-            className="form-control text-info text-center mt-3"
-            id="commonAreasValue"
-            placeholder="%"
-            onBlur={onBlur}
-          />
-          <button
-            onClick={onClick}
-            // onBlur={onBlur}
-            type="submit"
-            className="btn btn-primary d-none"
-          >
-            Enter
-          </button>
+          <div className="submitDiv">
+            <input
+              autoFocus
+              type="number"
+              min="0"
+              className="form-control text-info mt-3"
+              id="commonAreasValue"
+              placeholder="%"
+              onBlur={onBlur}
+            />
+            <button
+              onClick={onClick}
+              // onBlur={onBlur}
+              type="submit"
+              className="btn btn-danger m-2"
+            >
+              Enter
+            </button>
+          </div>
         </div>
       </form>
     );
