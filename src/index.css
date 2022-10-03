@@ -57,3 +57,13 @@ input {
   justify-content: space-between;
   align-items: baseline;
 }
+
+.labelQuestion {
+  display: flex;
+  justify-content: start;
+  align-items: baseline;
+}
+
+.font {
+  margin-left: 1rem;
+}

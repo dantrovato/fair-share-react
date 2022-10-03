@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
 class CommonAreas extends Component {
   render() {
@@ -10,13 +12,16 @@ class CommonAreas extends Component {
     return (
       <form className="m-3">
         <div className="form-group m-auto">
-          <label
-            htmlFor="commonAreasValue"
-            className="text-info"
-            id="commonAreasLabel"
-          >
-            {commonAreasMessage}
-          </label>
+          <div className="labelQuestion">
+            <label
+              htmlFor="commonAreasValue"
+              className="text-info"
+              id="commonAreasLabel"
+            >
+              {commonAreasMessage}
+            </label>
+            <FontAwesomeIcon icon={faQuestion} className="font" />
+          </div>
           <div className="submitDiv">
             <input
               autoFocus

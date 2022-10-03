@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 // import "font-awesome/css/font-awesome.css";
 import "./App.css";
+import Navbar from "./components/navbar";
 import Header from "./components/header";
 import Subheader from "./components/subheader";
 import CommonAreas from "./components/commonAreas";
@@ -197,6 +198,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
+        {/* <Navbar /> */}
         <Header />
         <Image />
         <Subheader />
