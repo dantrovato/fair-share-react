@@ -54,7 +54,7 @@ let ResultMessage = ({
 
     return (
       <React.Fragment>
-        <div className="col-md-5 mx-auto mt-5 bg-info" id="header">
+        <div className="col-md-5 mx-auto mt-5 bg-info header">
           <h1 className="display-4 fw-normal text-center">Results</h1>
 
           {costOfEachRoomArray.map((roomCost, index) => (
@@ -71,8 +71,8 @@ let ResultMessage = ({
             </p>
           ))}
         </div>
-        <div className="col-md-5 mx-auto" id="header">
-          <h1 className="text-center text-info m-5">The breakdown</h1>
+        <div className="col-md-5 mx-auto header">
+          <h1 className="text-center text-info mt-5">The breakdown</h1>
 
           <p className="text-center text-info p-2 m-0">
             The value of common area is {commonAreaValue}

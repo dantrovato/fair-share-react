@@ -25,7 +25,7 @@ class CommonAreas extends Component {
               className="form-control text-info mt-3"
               id="commonAreasValue"
               placeholder="%"
-              onBlur={onBlur}
+              // onBlur={onBlur}
             />
             <button
               onClick={onClick}

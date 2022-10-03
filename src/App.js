@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
+// import "font-awesome/css/font-awesome.css";
 import "./App.css";
 import Header from "./components/header";
 import Subheader from "./components/subheader";
@@ -12,6 +13,7 @@ import Image from "./components/image";
 import Footer from "./components/footer";
 
 // fix:
+// add ? to explain common areas
 // make sure focus goes on input clicked
 // make image load from file instead of url
 // customise colors
@@ -26,9 +28,7 @@ class App extends Component {
     bedroomCount: 0,
     bedroomCountMessage: "Enter the number of bedrooms",
     dimentions: [],
-    // bedroomSizeMessage: undefined,
     roommates: [],
-    // roommatesMessage: undefined,
   };
 
   addErrorStyles = (label) => {
@@ -89,7 +89,6 @@ class App extends Component {
 
   handleBedroomCount = (event) => {
     event.preventDefault();
-    console.log("handleBedroomCount:", event.target.tagName);
     const input = document.querySelector("#bedroomCount");
     const label = document.querySelector("#bedroomCountLabel");
     const bedroomCount = Number(input.value);

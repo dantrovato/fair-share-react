@@ -20,7 +20,7 @@ class PropertyValue extends Component {
               className="form-control text-info mt-3"
               id="propertyValue"
               placeholder="$"
-              onBlur={this.props.onClick}
+              // onBlur={this.props.onClick}
             />
             <button
               onClick={this.props.onClick}

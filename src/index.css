@@ -14,7 +14,8 @@ code {
 
 /* My own added rules */
 
-#header {
+#header,
+div.header {
   padding: 3rem;
   margin-bottom: -2.5rem;
   width: 100%;

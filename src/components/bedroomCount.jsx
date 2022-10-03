@@ -56,7 +56,7 @@ const BedroomCount = ({
             className="form-control text-info mt-3"
             id="bedroomCount"
             placeholder=""
-            onBlur={onClick}
+            // onBlur={onClick}
           />
           <button
             onClick={onClick}
