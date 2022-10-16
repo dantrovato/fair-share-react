@@ -47,20 +47,14 @@ class App extends Component {
     const input = document.querySelector("#propertyValue");
     const label = document.querySelector("#propertyValueLabel");
     const propertyValue = Number(input.value);
-    // let propertyValueMessage;
-    // resets the input display to a valid number in case somebody enters 00009 or some nonsense
     input.value = propertyValue;
 
     if (propertyValue <= 0) {
-      // propertyValueMessage = "Enter a number greater than 0";
-      // this.setState({ propertyValueMessage });
       this.addErrorStyles(label);
       return;
     }
 
     this.removeErrorStyles(label);
-    // propertyValueMessage = `The rent for the entire property is $${propertyValue}`;
-    // this.setState({ propertyValue, propertyValueMessage });
     this.setState({ propertyValue });
     this.addFocusToNextInput(event);
   };
@@ -71,19 +65,14 @@ class App extends Component {
     const input = document.querySelector("#commonAreasValue");
     const label = document.querySelector("#commonAreasLabel");
     const commonAreasPercentage = Number(input.value);
-    // let commonAreasMessage;
     input.value = commonAreasPercentage;
 
     if (commonAreasPercentage < 0 || commonAreasPercentage > 100) {
-      // commonAreasMessage = "Enter a number between 0 and 100";
-      // this.setState({ commonAreasMessage });
       this.addErrorStyles(label);
       return;
     }
 
     this.removeErrorStyles(label);
-    // commonAreasMessage = `The value of the common area is ${commonAreasPercentage}%`;
-    // this.setState({ commonAreasPercentage, commonAreasMessage });
     this.setState({ commonAreasPercentage });
     this.addFocusToNextInput(event);
   };
@@ -93,31 +82,23 @@ class App extends Component {
     const input = document.querySelector("#bedroomCount");
     const label = document.querySelector("#bedroomCountLabel");
     const bedroomCount = Number(input.value);
-    // let bedroomCountMessage;
     input.value = bedroomCount;
 
     if (bedroomCount < 1) {
-      // bedroomCountMessage = "Enter a number greater than 0";
-      // this.setState({ bedroomCountMessage });
       this.addErrorStyles(label);
       return;
     }
 
     if (!Number.isInteger(bedroomCount)) {
-      // bedroomCountMessage = "Enter a whole number";
-      // this.setState({ bedroomCountMessage });
       this.addErrorStyles(label);
       return;
     }
 
     this.removeErrorStyles(label);
-    // bedroomCountMessage = `There property has ${bedroomCount} bedrooms`;
-    // this.setState({ bedroomCount, bedroomCountMessage });
     this.setState({ bedroomCount });
     this.addFocusToNextInput(event);
   };
 
-  // helper method for handleRoomSize and handleRoommates
   addFocusToNextInput = (event) => {
     if (
       event.target.closest("form").nextElementSibling.querySelector("input")
@@ -144,13 +125,11 @@ class App extends Component {
 
     if (roomSize.value <= 0) {
       const label = document.getElementById(labelId);
-      // label.textContent = "Enter a number greater than 0";
       this.addErrorStyles(label);
       return;
     }
 
     roomSize.value = Number(roomSize.value);
-    // label.textContent = `The size of room ${roomKey} is ${roomSize.value}`;
     this.removeErrorStyles(label);
     this.setState({ dimentions: cloneDimentions });
     this.addFocusToNextInput(event);
@@ -169,13 +148,11 @@ class App extends Component {
 
     const value = Number(numberRoommates.value);
     if (value <= 0 || !Number.isInteger(value)) {
-      // label.textContent = "Enter a whole number greater than 0";
       this.addErrorStyles(label);
       return;
     }
 
     numberRoommates.value = Number(numberRoommates.value);
-    // label.textContent = `There will be ${numberRoommates.value} person in this room`;
     this.removeErrorStyles(label);
     this.setState({ roommates: cloneRoommates });
     this.addFocusToNextInput(event);
@@ -198,7 +175,10 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        {/* <Navbar /> */}
+        <Navbar />
+        {/* <div className="content">
+          <Route path="/about" component={About} />
+        </div> */}
         <Header />
         <Image />
         <Subheader />
