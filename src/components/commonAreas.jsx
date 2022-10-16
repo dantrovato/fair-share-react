@@ -4,7 +4,7 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
 class CommonAreas extends Component {
   render() {
-    const { propertyValue, onClick, onBlur, commonAreasMessage } = this.props;
+    const { propertyValue, onClick, commonAreasMessage } = this.props;
     if (propertyValue <= 0) {
       return;
     }
