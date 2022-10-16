@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
-import Navbar from "./navbar";
 import Header from "./header";
 import Subheader from "./subheader";
 import CommonAreas from "./commonAreas";
