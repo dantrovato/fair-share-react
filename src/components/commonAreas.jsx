@@ -20,7 +20,7 @@ class CommonAreas extends Component {
             >
               {commonAreasMessage}
             </label>
-            <FontAwesomeIcon icon={faQuestion} className="font" />
+            {/* <FontAwesomeIcon icon={faQuestion} className="font" /> */}
           </div>
           <div className="submitDiv">
             <input
